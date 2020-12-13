@@ -17,6 +17,7 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_red[]			= "#770000";
 static const char col1[]            = "#ffffff";
 static const char col2[]            = "#ffffff";
 static const char col3[]            = "#ffffff";
@@ -44,7 +45,7 @@ static const char *colors[][3]      = {
 	[SchemeCol10] = { col10,     col_gray1, col_gray2 },
 	[SchemeCol11] = { col11,     col_gray1, col_gray2 },
 	[SchemeCol12] = { col12,     col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]   = { col_gray4, col_cyan,  col_cyan },
 };
 
 /* tagging */
@@ -88,6 +89,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *rangercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *browsercmd[]  = { "brave", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h", "now", NULL };
 static const char *upvol[]   = { "/home/yushi/.config/dwm/scripts/volu", NULL };
@@ -99,6 +101,7 @@ static Key keys[] = {
 	{ 0,							XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
