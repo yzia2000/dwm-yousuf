@@ -2,7 +2,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -16,7 +16,9 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
+static const char col_gray5[]       = "#282c34";
 static const char col_cyan[]        = "#005577";
+static const char col_red[]			= "#924441";
 static const char col1[]            = "#ffffff";
 static const char col2[]            = "#ffffff";
 static const char col3[]            = "#ffffff";
@@ -31,7 +33,7 @@ static const char col11[]           = "#ffffff";
 static const char col12[]           = "#ffffff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm]  = { col_gray3, col_gray1, col_gray5 },
 	[SchemeCol1]  = { col1,      col_gray1, col_gray2 },
 	[SchemeCol2]  = { col2,      col_gray1, col_gray2 },
 	[SchemeCol3]  = { col3,      col_gray1, col_gray2 },
@@ -44,7 +46,7 @@ static const char *colors[][3]      = {
 	[SchemeCol10] = { col10,     col_gray1, col_gray2 },
 	[SchemeCol11] = { col11,     col_gray1, col_gray2 },
 	[SchemeCol12] = { col12,     col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]   = { col_gray4, col_red,  col_red },
 };
 
 /* tagging */
@@ -79,7 +81,9 @@ static const Layout layouts[] = {
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      tagprevmon,     {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -88,6 +92,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *rangercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *browsercmd[]  = { "brave", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h", "now", NULL };
 static const char *upvol[]   = { "/home/yushi/.config/dwm/scripts/volu", NULL };
@@ -99,6 +104,7 @@ static Key keys[] = {
 	{ 0,							XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
