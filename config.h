@@ -98,18 +98,11 @@ static const char *browsercmd[]  = { "brave", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h", "now", NULL };
 static const char *upvol[]   = { "/home/yushi/.config/dwm/scripts/volu", NULL };
 static const char *downvol[] = { "/home/yushi/.config/dwm/scripts/vold", NULL };
+static const char *mutemiccmd[] = { "/home/yushi/.config/dwm/scripts/togglemic", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,							XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
-	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
-	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -143,6 +136,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    // Custom Shortcuts
+	{ 0,							XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
+	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
+	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY|ControlMask,           XK_m,      spawn,          {.v = mutemiccmd } }
 };
 
 /* button definitions */
