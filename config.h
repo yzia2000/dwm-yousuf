@@ -93,7 +93,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 static const char *rangercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *browsercmd[]  = { "firefox-developer-edition", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h", "now", NULL };
@@ -102,6 +102,7 @@ static const char *upvol[]   = { "/home/yushi/.config/dwm/scripts/volu", NULL };
 static const char *downvol[] = { "/home/yushi/.config/dwm/scripts/vold", NULL };
 static const char *mutemiccmd[] = { "/home/yushi/.config/dwm/scripts/togglemic", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *clipmenucmd[] = { "/usr/bin/clipmenu",  NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -146,6 +147,7 @@ static Key keys[] = {
 	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
+	{ MODKEY,				XK_c,	   spawn,		   {.v = clipmenucmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,				XK_h,	   spawn,          {.v = hibernatecmd } },
