@@ -93,7 +93,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
+static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", "-d", "\"$(cat $HOME/last_dir)\"", NULL };
 static const char *rangercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *browsercmd[]  = { "firefox-developer-edition", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h", "now", NULL };
@@ -153,7 +153,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_h,	   spawn,          {.v = hibernatecmd } },
 	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY|ControlMask,           XK_m,      spawn,          {.v = mutemiccmd } }
+  { MODKEY|ControlMask,           XK_m,      spawn,          {.v = mutemiccmd } }
 };
 
 /* button definitions */
