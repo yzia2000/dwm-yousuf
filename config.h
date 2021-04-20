@@ -146,14 +146,15 @@ static Key keys[] = {
 	{ 0,							XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,							XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,							XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	{ MODKEY|ShiftMask,				XK_f,	   spawn,		   {.v = rangercmd } },
-	{ MODKEY,				XK_c,	   spawn,		   {.v = clipmenucmd } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,				XK_s,	   spawn,          {.v = shutdowncmd } },
-	{ MODKEY|ShiftMask,				XK_h,	   spawn,          {.v = hibernatecmd } },
-	{ MODKEY|ShiftMask,				XK_b,      spawn,          {.v = browsercmd } }, 
-	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
-  { MODKEY|ControlMask,           XK_m,      spawn,          {.v = mutemiccmd } }
+	{ MODKEY|ShiftMask,				XK_f,	          spawn,		      {.v = rangercmd } },
+	{ MODKEY,				          XK_c,	          spawn,		      {.v = clipmenucmd } },
+	{ MODKEY,                 XK_p,           spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,				XK_s,	          spawn,          {.v = shutdowncmd } },
+	{ MODKEY|ShiftMask,				XK_h,	          spawn,          {.v = hibernatecmd } },
+	{ MODKEY|ShiftMask,				XK_b,           spawn,          {.v = browsercmd } }, 
+	{ MODKEY,						      XK_Return,      spawn,          {.v = termcmd } },
+  { MODKEY|ControlMask,     XK_m,           spawn,          {.v = mutemiccmd } },
+  { MODKEY|ControlMask,     XK_space,       focusmaster,    {0} },
 };
 
 /* button definitions */
