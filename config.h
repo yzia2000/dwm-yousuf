@@ -60,6 +60,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "PulseUi",  NULL,       NULL,       1 << 8,       1,            0 },
+	{ "zoom",  NULL,       NULL,       1 << 8,       1,            1 },
 };
 
 /* layout(s) */
